@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+
+*{
+	font-family: Lobster;
+}
+
+#app {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 3vh 3vw;
+}
+
+button:focus{
+	outline: none;
+}
+
+button{
+	cursor: pointer;
+}
+
+#loading-image{
+	cursor: pointer;
+	background-image: url("./images/title.jpg");
+	background-size: contain;
+	background-repeat: no-repeat;
+	padding: 45vh 45vw;
+}

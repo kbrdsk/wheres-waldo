@@ -1,0 +1,80 @@
+#game img {
+	cursor: pointer;
+	max-width: 90vw;
+	max-height: 90vh;
+}
+
+#game button {
+	position: absolute;
+}
+
+#game button.back{
+	height: 4em;
+	width: 4em;
+	background-image: url("../images/back.svg");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-color: #fff0;
+	border: none;
+	top: 2em;
+	left: 2em;
+	opacity: 0.7;
+}
+
+#game button.back:hover{
+	height: 4.4em;
+	width: 4.4em;
+	opacity: 1;
+}
+
+
+
+#game .menu button {
+	border: none;
+	background-color: #fffc;
+	height: 6em;
+	width: 6em;
+	border-radius: 50%;
+	overflow: hidden;
+	opacity: 1;
+	box-shadow: 0 0 0.5em white;
+}
+
+#game .menu button.hidden {
+	height: 0;
+	width: 0;
+	opacity: 0;
+	box-shadow: none;
+}
+
+#game .menu button:hover {
+	transform: scale(1.1);
+	background-color: #fffe;
+}
+
+#game .guess-result.correct::before{
+	content: "\2713";
+	font-size: 3em;
+	position: relative;
+	top: -0.7em;
+	left: -0.65em;
+	color: green;
+	background-color: #cfcd;
+	padding: 0 0.2em;
+	border-radius: 50%;
+	box-shadow: 0 0 0.5em #cfc;
+}
+
+#game .guess-result.incorrect::before{
+	box-sizing: border-box;
+	content: "\2715";
+	font-size: 3em;
+	position: relative;
+	top: -0.7em;
+	left: -0.65em;
+	color: red;
+	background-color: #fccd;
+	padding: 0 0.2em;
+	border-radius: 50%;
+	box-shadow: 0 0 0.5em #faa;
+}
