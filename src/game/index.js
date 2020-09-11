@@ -169,7 +169,7 @@ function getRelativeLoc(event) {
 }
 
 async function checkGuess(id, character, x, y) {
-	const serverURL = "http://localhost:5001/finding-beyonce/us-central1/";
+	const serverURL = "https://us-central1-finding-beyonce.cloudfunctions.net/";
 	const query = `?puzzleId=${id}&character=${character}&x=${x}&y=${y}`;
 	const result = await fetch(serverURL + "replyToGuess" + query);
 	const data = await result.json();

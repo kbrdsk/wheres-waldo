@@ -2,7 +2,7 @@ import React from "react";
 
 import "./style.css";
 
-const serverURL = "http://localhost:5001/finding-beyonce/us-central1/";
+const serverURL = "https://us-central1-finding-beyonce.cloudfunctions.net/";
 
 export class Scores extends React.Component {
 	constructor(props) {
@@ -125,34 +125,39 @@ export class ScoreSubmission extends React.Component {
 		this.setState({ playerId: event.target.value });
 	}
 
-	async submitScore() {
-		const playerId = this.state.playerId || "";
-		if (!playerId.match(/^\w*$/)) {
-			this.setState({ badName: true });
-			return;
+	async submitScore(event) {
+		event.persist();
+		if (!event.target.disabled) {
+			event.target.disabled = true;
+			const playerId = this.state.playerId || "";
+			if (!playerId.match(/^\w*$/)) {
+				this.setState({ badName: true });
+				return;
+			}
+			const submission = await logScore(
+				this.printedScore,
+				this.props.gameId,
+				playerId
+			);
+			if (!submission) {
+				this.setState({ usedName: true });
+				return;
+			}
+			this.props.displayScores();
 		}
-		const submission = await logScore(
-			this.printedScore,
-			this.props.gameId,
-			playerId
-		);
-		if (!submission) {
-			this.setState({ usedName: true });
-			return;
-		}
-		this.props.displayScores();
+		event.target.disabled = false;
 	}
 }
 
 async function getIP() {
-	const result = await fetch("http://gd.geobytes.com/GetCityDetails");
+	const result = await fetch("https://api.ipify.org?format=json");
 	const data = await result.json();
-	return data.geobytesipaddress;
+	return data.ip;
 }
 
 async function logScore(score, imgId, playerId) {
 	if (!playerId) {
-		const ip = 7;
+		const ip = getIP();
 		playerId = `user_anon#${ip}`;
 	}
 	const query = `?score=${score}&imgId=${imgId}&playerId=${playerId}`;
@@ -168,6 +173,6 @@ async function getImgScores(imgId) {
 	return data.sort(sortScores);
 }
 
-function sortScores({score: scoreA}, {score: scoreB}) {
+function sortScores({ score: scoreA }, { score: scoreB }) {
 	return scoreA < scoreB ? -1 : scoreA > scoreB ? 1 : 0;
 }
