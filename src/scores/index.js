@@ -50,7 +50,7 @@ export class Scores extends React.Component {
 		return (
 			<div className="score-listing" key={scoreObj.playerId}>
 				<span className="name">{playerId}</span>
-				<span className="score">{scoreObj.score}</span>
+				<span className="score">{printScore(scoreObj.score)}</span>
 			</div>
 		);
 	}
@@ -85,8 +85,6 @@ export class ScoreSubmission extends React.Component {
 
 		this.setPlayerId = this.setPlayerId.bind(this);
 		this.submitScore = this.submitScore.bind(this);
-
-		this.printedScore = Math.floor(this.props.score / 10) / 100;
 	}
 	render() {
 		return (
@@ -95,7 +93,7 @@ export class ScoreSubmission extends React.Component {
 					<div className="score-report">
 						Time:{" "}
 						<span className="printed-score">
-							{this.printedScore}
+							{printScore(this.props.score)}
 						</span>
 					</div>
 					{this.state.usedName ? (
@@ -132,15 +130,17 @@ export class ScoreSubmission extends React.Component {
 			const playerId = this.state.playerId || "";
 			if (!playerId.match(/^\w*$/)) {
 				this.setState({ badName: true });
+				event.target.disabled = false;
 				return;
 			}
 			const submission = await logScore(
-				this.printedScore,
+				this.props.score,
 				this.props.gameId,
 				playerId
 			);
 			if (!submission) {
 				this.setState({ usedName: true });
+				event.target.disabled = false;
 				return;
 			}
 			this.props.displayScores();
@@ -175,4 +175,11 @@ async function getImgScores(imgId) {
 
 function sortScores({ score: scoreA }, { score: scoreB }) {
 	return scoreA < scoreB ? -1 : scoreA > scoreB ? 1 : 0;
+}
+
+function printScore(score) {
+	const totalTime = Math.floor(score / 10) / 100;
+	const seconds = totalTime % 60;
+	const minutes = Math.floor(totalTime / 60);
+	return `${minutes}:${seconds < 10 ? 0 : ""}${seconds}`;
 }
