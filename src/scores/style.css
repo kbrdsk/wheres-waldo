@@ -1,0 +1,111 @@
+#scores .img-select-menu {
+	position: relative;
+	max-width: 100vw;
+	max-height: 10vh;
+	overflow: hidden;
+}
+
+#scores .img-select {
+	max-height: 10vh;
+	max-width: 12vw;
+	margin: 0.5vw;
+	opacity: 0.8;
+	cursor: pointer;
+}
+
+#scores .img-select:hover {
+	transform: scale(1.1);
+	opacity: 1;
+}
+
+#scores .score-list-background {
+	position: absolute;
+	max-width: 90vw;
+	max-height: 80vh;
+	opacity: 0.2;
+	z-index: -1;
+}
+
+#scores .score-list {
+	padding: 2vw 2vw;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+}
+
+#scores .score-listing {
+	margin: 0.5em;
+	background-color: #fff9;
+	padding-left: 0.3em;
+}
+
+#scores .score-listing .name {
+	margin-right: 1em;
+	font-size: 1.3em;
+	color: var(--purple);
+}
+
+#scores .score-listing .score {
+	font-size: 1.1em;
+	color: var(--pink);
+}
+
+#game button.back {
+	z-index: 1;
+}
+
+#score-submission {
+	height: 100%;
+	width: 100%;
+	background-color: #fff8;
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+#score-submission .submit {
+	border: none;
+	background-color: #5c5e9900;
+	color: var(--pink);
+	padding: 0.2em 0.5em;
+}
+#score-submission .submit:hover {
+	transform: scale(1.1);
+}
+
+#score-submission .form-container {
+	padding: 1em;
+	padding-top: 0.3em;
+	background-color: #5c5e99ee;
+	border-radius: 0.5em;
+}
+
+#score-submission .score-report {
+	font-size: 1.3em;
+	margin: 0.3em;
+}
+
+#score-submission .score-report .printed-score {
+	color: var(--pink);
+}
+
+#score-submission .name-error {
+	font-size: 0.7em;
+	color: red;
+}
+
+#score-submission .name-input {
+	background-color: #5c5e9900;
+	border: none;
+	border-bottom: solid 1px black;
+}
+
+#score-submission .name-input::placeholder {
+	color: white;
+}
+
+#score-submission .name-input:focus {
+	outline: none;
+}

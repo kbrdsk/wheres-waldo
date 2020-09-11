@@ -26,7 +26,12 @@ export class Menu extends React.Component {
 					>
 						Play
 					</button>
-					<button className="scores">Scores</button>
+					<button
+						className="scores"
+						onClick={this.props.displayScores}
+					>
+						Scores
+					</button>
 				</div>
 			</div>
 		);

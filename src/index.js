@@ -5,7 +5,7 @@ import "./style.css";
 
 import { Menu } from "./menu/index.js";
 import { Game } from "./game/index.js";
-import { Scores } from "./scores/index.js";
+import { Scores, ScoreSubmission } from "./scores/index.js";
 
 function importAll(r) {
 	return r.keys().map(r);
@@ -33,18 +33,21 @@ class App extends React.Component {
 
 		this.displayGame = this.displayGame.bind(this);
 		this.displayMenu = this.displayMenu.bind(this);
+		this.displayScores = this.displayScores.bind(this);
 		this.endGame = this.endGame.bind(this);
 	}
 
 	render() {
 		const display = this.state.display;
 		const gameIndex = this.state.gameIndex;
+		const score = this.state.score;
 		return (
 			<div id="app">
 				{display === "menu" ? (
 					<Menu
 						images={gameImages}
 						displayGame={this.displayGame}
+						displayScores={this.displayScores}
 						gameIndex={this.state.gameIndex}
 					/>
 				) : display === "game" ? (
@@ -55,25 +58,44 @@ class App extends React.Component {
 						characters={gameCharacters[gameIndex]}
 					/>
 				) : display === "scores" ? (
-					<Scores />
+					<Scores
+						displayMenu={this.displayMenu}
+						images={gameImages}
+					/>
 				) : (
 					<div id="loading-image" onClick={this.displayMenu}></div>
 				)}
+				{score ? (
+					<ScoreSubmission
+						score={score}
+						displayScores={this.displayScores}
+						gameId={gameIndex}
+					/>
+				) : null}
 			</div>
 		);
 	}
 
-	endGame(time){
-		if(time);
-		this.displayMenu();
+	endGame(victory) {
+		if (victory) {
+			const score = Date.now() - this.startTime;
+			this.setState({score});
+		} else {
+			this.displayMenu();
+		}
 	}
 
 	displayGame(gameIndex) {
+		this.startTime = Date.now();
 		this.setState({ display: "game", gameIndex });
 	}
 
 	displayMenu() {
-		this.setState({ display: "menu" });
+		this.setState({ display: "menu", score: null });
+	}
+
+	displayScores() {
+		this.setState({ display: "scores", score: null });
 	}
 }
 

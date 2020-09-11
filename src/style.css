@@ -1,7 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
 
+:root{
+	--purple: #5c5e99;
+	--pink: #db8588;
+}
+
 *{
 	font-family: Lobster;
+	user-select: none;
 }
 
 #app {
@@ -25,4 +31,24 @@ button{
 	background-size: contain;
 	background-repeat: no-repeat;
 	padding: 45vh 45vw;
+}
+
+button.back{
+	position: absolute;
+	height: 4em;
+	width: 4em;
+	background-image: url("./images/back.svg");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-color: #fff0;
+	border: none;
+	top: 2em;
+	left: 2em;
+	opacity: 0.7;
+}
+
+button.back:hover{
+	height: 4.4em;
+	width: 4.4em;
+	opacity: 1;
 }

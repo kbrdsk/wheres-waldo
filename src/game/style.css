@@ -8,27 +8,6 @@
 	position: absolute;
 }
 
-#game button.back{
-	height: 4em;
-	width: 4em;
-	background-image: url("../images/back.svg");
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-color: #fff0;
-	border: none;
-	top: 2em;
-	left: 2em;
-	opacity: 0.7;
-}
-
-#game button.back:hover{
-	height: 4.4em;
-	width: 4.4em;
-	opacity: 1;
-}
-
-
-
 #game .menu button {
 	border: none;
 	background-color: #fffc;

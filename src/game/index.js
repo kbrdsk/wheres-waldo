@@ -22,7 +22,7 @@ export class Game extends React.Component {
 			<div id="game">
 				<button
 					className="back"
-					onClick={this.props.endGame}
+					onClick={() => this.props.endGame()}
 				></button>
 				<img
 					src={this.props.image}
@@ -57,7 +57,6 @@ export class Game extends React.Component {
 		const remainingCharacters = this.props.characters.filter(
 			(character) => !this.state.foundCharacters.includes(character)
 		);
-		console.log(this.state.mouseClick);
 		const location = {
 			x: this.state.mouseClick.clientX,
 			y: this.state.mouseClick.clientY,
@@ -120,7 +119,7 @@ export class Game extends React.Component {
 			guessResult: "correct",
 		});
 		if (this.state.foundCharacters.length === this.props.characters.length)
-			this.props.endGame();
+			this.props.endGame(true);
 	}
 
 	handleIncorrectGuess() {
