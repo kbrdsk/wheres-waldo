@@ -72,6 +72,16 @@ class App extends React.Component {
 						gameId={gameIndex}
 					/>
 				) : null}
+				<div id="credits">
+					Based on{" "}
+					<a
+						target="_blank"
+						href="https://www.amazon.com/Hands-High-Unofficial-Finding-Adventure/dp/0995578095"
+					>
+						Hands High
+					</a>{" "}
+					by Sugoi Books.
+				</div>
 			</div>
 		);
 	}
@@ -79,7 +89,7 @@ class App extends React.Component {
 	endGame(victory) {
 		if (victory) {
 			const score = Date.now() - this.startTime;
-			this.setState({score});
+			this.setState({ score });
 		} else {
 			this.displayMenu();
 		}

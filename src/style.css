@@ -10,6 +10,12 @@
 	user-select: none;
 }
 
+#credits{
+	position: fixed;
+	bottom: 1vh;
+	right: 1vw;
+}
+
 #app {
 	display: flex;
 	align-items: center;
