@@ -76,6 +76,7 @@ class App extends React.Component {
 					Based on{" "}
 					<a
 						target="_blank"
+						rel="noopener noreferrer"
 						href="https://www.amazon.com/Hands-High-Unofficial-Finding-Adventure/dp/0995578095"
 					>
 						Hands High
