@@ -109,6 +109,7 @@ export class ScoreSubmission extends React.Component {
 						className="name-input"
 						type="text"
 						placeholder="Enter your name."
+						maxlength="15"
 						onChange={this.setPlayerId}
 					/>
 					<button className="submit" onClick={this.submitScore}>
