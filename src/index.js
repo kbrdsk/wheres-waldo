@@ -48,7 +48,7 @@ class App extends React.Component {
 						images={gameImages}
 						displayGame={this.displayGame}
 						displayScores={this.displayScores}
-						gameIndex={this.state.gameIndex}
+						gameIndex={gameIndex}
 					/>
 				) : display === "game" ? (
 					<Game
@@ -72,17 +72,7 @@ class App extends React.Component {
 						gameId={gameIndex}
 					/>
 				) : null}
-				<div id="credits">
-					Based on{" "}
-					<a
-						target="_blank"
-						rel="noopener noreferrer"
-						href="https://www.amazon.com/Hands-High-Unofficial-Finding-Adventure/dp/0995578095"
-					>
-						Hands High
-					</a>{" "}
-					by Sugoi Books.
-				</div>
+				<Credits />
 			</div>
 		);
 	}
@@ -108,6 +98,22 @@ class App extends React.Component {
 	displayScores() {
 		this.setState({ display: "scores", score: null });
 	}
+}
+
+function Credits(props) {
+	return (
+		<div id="credits">
+			Based on{" "}
+			<a
+				target="_blank"
+				rel="noopener noreferrer"
+				href="https://www.amazon.com/Hands-High-Unofficial-Finding-Adventure/dp/0995578095"
+			>
+				Hands High
+			</a>{" "}
+			by Sugoi Books.
+		</div>
+	);
 }
 
 // ========================================

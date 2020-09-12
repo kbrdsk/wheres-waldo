@@ -87,6 +87,7 @@ export class Game extends React.Component {
 			top: "0em",
 			right: "0em",
 		};
+		
 		return (
 			<button
 				className={!this.state.showMenu ? "hidden" : ""}
